@@ -18,8 +18,8 @@ A collaborative document editing application built with **Next.js**, **Convex**,
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/google-docs-clone.git
-   cd google-docs-clone
+   git clone https://github.com/TungDuongTa/ggdocs-clone.git
+   cd docs-clone
    ```
 
 2. **Install dependencies:**

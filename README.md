@@ -1,37 +1,42 @@
-# Google Docs clone with Nextjs, Tiptap, Convex and Liveblocks
+# Google Docs Clone
 
-Foobar is a Python library for dealing with word pluralization.
+A collaborative document editing application built with **Next.js**, **Convex**, **Tiptap**, and **Liveblocks**.
 
-## Installation
+## Features
+- **Real-time collaboration**: Work together on the same document with live updates.
+- **Rich text editing**: Leverage Tiptap for a seamless and customizable text editor.
+- **Scalable backend**: Powered by Convex for a robust database and API layer.
+- **Live presence**: Visualize collaborators and their cursors with Liveblocks.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+## Technologies Used
+- [Next.js](https://nextjs.org/) - React framework for server-side rendering and static site generation.
+- [Convex](https://convex.dev/) - Backend as a service for data storage and real-time sync.
+- [Tiptap](https://tiptap.dev/) - Highly extensible rich-text editor.
+- [Liveblocks](https://liveblocks.io/) - Live collaboration and presence management.
 
-```bash
-pip install foobar
-```
+## Getting Started
 
-## Usage
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/google-docs-clone.git
+   cd google-docs-clone
+   ```
 
-```python
-import foobar
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# returns 'words'
-foobar.pluralize('word')
+3. **Configure environment variables:**
+   Create a `.env.local` file in the root directory and add your Convex and Liveblocks API keys.
 
-# returns 'geese'
-foobar.pluralize('goose')
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the app in action.
 
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
 
-## Contributing
+---
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)

@@ -16,7 +16,9 @@ import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import Link from "@tiptap/extension-link";
+import TextAlign from "@tiptap/extension-text-align";
 import { useEditorStore } from "@/store/use-editor-store";
+import { FontSizeExtension } from "@/extensions/font-size";
 export function Editor() {
   const { setEditor } = useEditorStore();
   const editor = useEditor({
@@ -53,6 +55,7 @@ export function Editor() {
     },
     extensions: [
       StarterKit,
+      FontSizeExtension,
       TaskItem.configure({ nested: true }),
       TaskList,
       Table,
@@ -65,6 +68,9 @@ export function Editor() {
       FontFamily,
       TextStyle,
       Color,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
       Highlight.configure({ multicolor: true }),
       Link.configure({
         openOnClick: false,

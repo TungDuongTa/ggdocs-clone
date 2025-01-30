@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -11,6 +11,7 @@ import { useEditorStore } from "@/store/use-editor-store";
 import { ChevronDownIcon } from "lucide-react";
 
 export function FontFamilyButton() {
+  const [open, setOpen] = useState(false);
   const { editor } = useEditorStore();
   const fonts = [
     {
@@ -35,9 +36,12 @@ export function FontFamilyButton() {
     },
   ];
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <button className="h-7 w-[120px] shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm">
+        <button
+          className="h-7 w-[120px] shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm"
+          onClick={() => setOpen(!open)}
+        >
           <span className="truncate">
             {editor?.getAttributes("textStyle")?.fontFamily || "Arial"}
           </span>
@@ -47,7 +51,10 @@ export function FontFamilyButton() {
       <DropdownMenuContent className="p-1 flex flex-col gap-y-1">
         {fonts.map(({ label, value }) => (
           <button
-            onClick={() => editor?.chain().focus().setFontFamily(value).run()}
+            onClick={() => {
+              editor?.chain().focus().setFontFamily(value).run();
+              setOpen(false);
+            }}
             key={value}
             className={cn(
               "flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80 ",

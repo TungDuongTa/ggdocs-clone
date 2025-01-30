@@ -19,6 +19,11 @@ import Link from "@tiptap/extension-link";
 import TextAlign from "@tiptap/extension-text-align";
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
+import { LineHeightExtension } from "@/extensions/line-height";
+// import TemporaryHighlight from "@/extensions/tempo-highlight";
+import { TemporaryHighlightExtension } from "@/extensions/temp-highlight";
+import { Ruler } from "./ruler";
+
 export function Editor() {
   const { setEditor } = useEditorStore();
   const editor = useEditor({
@@ -54,7 +59,16 @@ export function Editor() {
       },
     },
     extensions: [
+      // TemporaryHighlight.configure({
+      //   className: "temporary-highlight", // Custom class name for styling
+      // }),
       StarterKit,
+      LineHeightExtension,
+      TemporaryHighlightExtension,
+      //LineHeightExtension.configure({
+      //   types: ["heading", "paragraph"],
+      //   defaultLineHeight: "normal",
+      // }),
       FontSizeExtension,
       TaskItem.configure({ nested: true }),
       TaskList,
@@ -145,25 +159,11 @@ export function Editor() {
       }),
     ],
     immediatelyRender: false,
-    content: `
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>
-      `,
+    content: "<p>Highlight and blur to see temporary effects!</p>",
   });
   return (
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:px-0 print:bg-white print:overflow-visible  ">
+      <Ruler />
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent editor={editor} />
       </div>

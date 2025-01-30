@@ -87,6 +87,10 @@ body {
   }
 }
 .tiptap {
+  /* .temporary-highlight {
+    background-color: rgba(255, 255, 0, 0.5);
+    transition: background-color 0.3s ease;
+  } */
   /* Link styles */
   a {
     @apply text-blue-600;
@@ -174,33 +178,44 @@ body {
   h4,
   h5,
   h6 {
-    line-height: 1.1;
-    margin-top: 2.5rem;
+    /* line-height: 1.1;
+    margin-top: 2.5rem; */
     text-wrap: pretty;
   }
 
-  h1,
+  /* h1,
   h2 {
     margin-top: 3.5rem;
     margin-bottom: 1.5rem;
-  }
+  } */
 
   h1 {
-    font-size: 1.4rem;
+    font-size: 36px;
+    line-height: 40px;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 30px;
+    line-height: 40px;
   }
 
   h3 {
-    font-size: 1.1rem;
+    font-size: 24px;
+    line-height: 40px;
   }
 
-  h4,
-  h5,
+  h4 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  h5 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
   h6 {
-    font-size: 1rem;
+    font-size: 12px;
+    line-height: 20px;
   }
   /* List styles */
   ul,

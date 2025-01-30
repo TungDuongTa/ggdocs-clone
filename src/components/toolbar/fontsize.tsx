@@ -1,6 +1,6 @@
 import { useEditorStore } from "@/store/use-editor-store";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MinusIcon, PlusIcon } from "lucide-react";
 
@@ -48,6 +48,9 @@ export function FontSizeButton() {
       setIsEditing(false);
     }
   };
+  useEffect(() => {
+    console.log("isEditing", isEditing);
+  }, [isEditing]);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (
@@ -137,7 +140,7 @@ export function FontSizeButton() {
                   onBlur={handleInputBlur}
                   onKeyDown={handleKeyDown}
                   onFocus={handleInputFocus}
-                  className="w-full h-full text-sm text-center p-0 border-none focus:outline-none focus:ring-0"
+                  className="h-7 w-10 text-sm text-center border border-neutral-400 rounded-sm bg-transparent focus:outline-none focus:ring-0"
                   aria-label="Font size"
                 />
               ) : (
@@ -147,13 +150,14 @@ export function FontSizeButton() {
           </div>
         </PopoverTrigger>
         <PopoverContent className="w-[65px] p-0">
-          <div className="max-h-[200px] overflow-auto">
+          <div className="h-auto">
             {fontSizes.map((size) => (
               <button
                 key={size}
                 className={cn(
-                  "w-full px-2 py-1 text-sm text-center hover:bg-gray-100",
-                  inputValue === size && "bg-blue-100 hover:bg-blue-200"
+                  "w-full px-2 py-1 text-sm text-center hover:bg-neutral-200/80",
+                  inputValue === size &&
+                    "bg-neutral-200/80 hover:bg-neutral-300"
                 )}
                 onClick={() => {
                   setInputValue(size);

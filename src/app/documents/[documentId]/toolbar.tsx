@@ -31,6 +31,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { LineHeightButton } from "@/components/toolbar/lineHeight";
 interface toolbarButtonProps {
   onClick?: () => void;
   isActive?: boolean;
@@ -175,7 +176,7 @@ export function Toolbar() {
       <LinkButton />
       <ImageButton />
       <AlignButton />
-      {/* {ToDO:line Height} */}
+      <LineHeightButton />
       <ListButton />
       {sections[2].map((item) => (
         <ToolbarButton key={item.lable} {...item} />

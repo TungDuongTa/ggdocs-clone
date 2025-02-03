@@ -53,16 +53,13 @@ export function Ruler() {
 
   return (
     <div
-      className="h-6 border-b border-gray-300 flex items-end relative select-none print:hidden"
+      className="h-6 w-[816px] mx-auto  border-b border-gray-300 flex items-end relative select-none print:hidden"
       ref={rulerRef}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <div
-        id="ruler-container"
-        className="max-w-[816px] mx-auto w-full h-full relative"
-      >
+      <div id="ruler-container" className=" w-full h-full relative">
         <Marker
           position={leftMargin}
           isLeft={true}

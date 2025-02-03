@@ -72,11 +72,11 @@ export function FontSizeButton() {
     }
   };
   const increment = () => {
-    const newSize = parseInt(fontSize) + 1;
+    const newSize = parseInt(currentFontSize) + 1;
     updateFontSize(newSize.toString());
   };
   const decrement = () => {
-    const newSize = parseInt(fontSize) - 1;
+    const newSize = parseInt(currentFontSize) - 1;
     if (newSize > 0) {
       updateFontSize(newSize.toString());
     }

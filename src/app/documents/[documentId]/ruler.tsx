@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 const markers = Array.from({ length: 83 }, (_, i) => i); //array from 0 to 83
@@ -53,7 +54,7 @@ export function Ruler() {
 
   return (
     <div
-      className="h-6 w-[816px] mx-auto  border-b border-gray-300 flex items-end relative select-none print:hidden"
+      className="h-6 w-[816px] mx-auto  border-b border-gray-300 flex items-end relative select-none print:hidden "
       ref={rulerRef}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}

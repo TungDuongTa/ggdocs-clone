@@ -1,8 +1,10 @@
 "use client";
 
+import { useEditorStore } from "@/store/use-editor-store";
 import { useState } from "react";
 
 export function TableInserter() {
+  const { editor } = useEditorStore();
   const [rows, setRows] = useState(10);
   const [cols, setCols] = useState(10);
   const [selected, setSelected] = useState({ row: 0, col: 0 });
@@ -18,6 +20,15 @@ export function TableInserter() {
 
   const handleClick = () => {
     setSelected(hoveredCell);
+    editor
+      ?.chain()
+      .focus()
+      .insertTable({
+        rows: hoveredCell.row,
+        cols: hoveredCell.col,
+        withHeaderRow: false,
+      })
+      .run();
     // Here you can handle the table insertion with the selected dimensions
     console.log(
       `Insert table with ${hoveredCell.row + 1}x${

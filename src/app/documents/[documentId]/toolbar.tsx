@@ -136,8 +136,8 @@ export function Toolbar() {
         lable: "Comment",
         tooltip: "Comment",
         icon: MessageSquarePlusIcon,
-        onClick: () => console.log(" TO Do Comment"),
-        isActive: false, // TODO: Enable this function
+        onClick: () => editor?.chain().focus().addPendingComment().run(),
+        isActive: editor?.isActive("liveblocksCommentMark"),
       },
       {
         lable: "List Todo",

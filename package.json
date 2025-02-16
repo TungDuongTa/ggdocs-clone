@@ -11,6 +11,10 @@
   "dependencies": {
     "@clerk/nextjs": "^6.11.2",
     "@hookform/resolvers": "^3.10.0",
+    "@liveblocks/client": "^2.18.1",
+    "@liveblocks/react": "^2.18.1",
+    "@liveblocks/react-tiptap": "^2.18.1",
+    "@liveblocks/react-ui": "^2.18.1",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.5",
     "@radix-ui/react-aspect-ratio": "^1.1.1",
@@ -38,6 +42,8 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.7",
+    "@tiptap/extension-collaboration": "^2.11.5",
+    "@tiptap/extension-collaboration-cursor": "^2.11.5",
     "@tiptap/extension-color": "^2.11.3",
     "@tiptap/extension-font-family": "^2.11.3",
     "@tiptap/extension-heading": "^2.11.3",
@@ -80,6 +86,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tiptap-extension-resize-image": "^1.2.1",
     "vaul": "^1.1.2",
+    "y-protocols": "^1.0.6",
     "zod": "^3.24.1",
     "zustand": "^5.0.3"
   },

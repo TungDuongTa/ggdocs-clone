@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { Avatars } from "./avatars";
 import {
   Menubar,
   MenubarContent,
@@ -224,6 +225,7 @@ export function Navbar() {
         </div>
       </div>
       <div className="flex gap-3 items-center pl-6">
+        <Avatars />
         <OrganizationSwitcher
           afterCreateOrganizationUrl="/"
           afterLeaveOrganizationUrl="/"

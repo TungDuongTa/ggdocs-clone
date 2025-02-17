@@ -22,7 +22,7 @@ import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
 // import TemporaryHighlight from "@/extensions/tempo-highlight";
 import { TemporaryHighlightExtension } from "@/extensions/temp-highlight";
-import { Ruler } from "./ruler";
+// import { Ruler } from "./ruler";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { Threads } from "./threads";
 export function Editor() {

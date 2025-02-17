@@ -4,9 +4,7 @@ import { PaginationStatus } from "convex/react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,

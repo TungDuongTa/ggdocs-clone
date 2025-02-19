@@ -25,7 +25,12 @@ import { TemporaryHighlightExtension } from "@/extensions/temp-highlight";
 // import { Ruler } from "./ruler";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { Threads } from "./threads";
+
+import { useStorage } from "@liveblocks/react/suspense";
+import { ContentItemMenu } from "@/components/ContentItemMenu";
 export function Editor() {
+  const leftMargin = useStorage((root) => root.leftMargin);
+  const rightMargin = useStorage((root) => root.rightMargin);
   const liveblocks = useLiveblocksExtension();
   const { setEditor } = useEditorStore();
   const editor = useEditor({
@@ -55,9 +60,9 @@ export function Editor() {
     },
     editorProps: {
       attributes: {
-        style: "padding-left: 56px ; padding-right: 56px;",
+        style: `padding-left: ${leftMargin ?? 56}px ; padding-right:${rightMargin ?? 56}px;`,
         class:
-          "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text",
+          "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] py-10 cursor-text",
       },
     },
     extensions: [
@@ -166,11 +171,15 @@ export function Editor() {
     immediatelyRender: false,
     content: "<p>Highlight and blur to see temporary effects!</p>",
   });
+  if (!editor) {
+    return null;
+  }
   return (
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:px-0 print:bg-white print:overflow-visible  ">
       {/* <Ruler /> */}
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent editor={editor} />
+        <ContentItemMenu editor={editor} />
         <Threads editor={editor} />
       </div>
     </div>

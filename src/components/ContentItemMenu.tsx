@@ -1,28 +1,31 @@
 import DragHandle from "@tiptap-pro/extension-drag-handle-react";
 import { Editor } from "@tiptap/react";
 
-import * as Popover from "@radix-ui/react-popover";
-import { Surface } from "@/components/tiptapUi/Surface";
+// import * as Popover from "@radix-ui/react-popover";
+// import { Surface } from "@/components/tiptapUi/Surface";
 
 import { useEffect, useState } from "react";
 import { useData } from "@/hooks/useData";
 import useContentItemActions from "@/hooks/useContentItemActions";
-import { Toolbar } from "./tiptapUi/toolbar";
-import { Icon } from "./tiptapUi/icon";
-import { DropdownButton } from "./tiptapUi/dropdown";
-import { Button } from "./ui/button";
+// import { Toolbar } from "./tiptapUi/toolbar";
+// import { Icon } from "./tiptapUi/icon";
+// import { DropdownButton } from "./tiptapUi/dropdown";
+// import { Button } from "./ui/button";
 import {
   ClipboardIcon,
+  CopyPlusIcon,
   GripVerticalIcon,
   PlusIcon,
   RemoveFormattingIcon,
+  Trash2Icon,
 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+// import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+import { Separator } from "./ui/separator";
 
 export type ContentItemMenuProps = {
   editor: Editor;
@@ -52,7 +55,7 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
       onNodeChange={data.handleNodeChange}
       tippyOptions={{
         offset: [-5, 5],
-        zIndex: 99,
+        zIndex: 9,
       }}
     >
       <div className="flex items-center gap-0.5">
@@ -110,7 +113,10 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
               <GripVerticalIcon className="size-4" />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="p-1 flex flex-col gap-y-1 ">
+          <DropdownMenuContent
+            className="p-1 flex flex-col gap-y-1 "
+            align="start"
+          >
             <button
               onClick={() => {
                 actions.resetTextFormatting();
@@ -118,7 +124,7 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
               }}
               className="flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80"
             >
-              <RemoveFormattingIcon className=" size-4" />
+              <RemoveFormattingIcon className=" size-4 mr-2" />
               <span className="text-sm">Clear formating</span>
             </button>
             <button
@@ -128,8 +134,29 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
               }}
               className="flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80"
             >
-              <ClipboardIcon className=" size-4" />
+              <ClipboardIcon className=" size-4 mr-2" />
               <span className="text-sm">Copy to clipboard</span>
+            </button>
+            <button
+              onClick={() => {
+                actions.duplicateNode();
+                setMenuOpen(false);
+              }}
+              className="flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80"
+            >
+              <CopyPlusIcon className=" size-4 mr-2" />
+              <span className="text-sm">Duplicate</span>
+            </button>
+            <Separator className="my-2" orientation="horizontal" />
+            <button
+              onClick={() => {
+                actions.deleteNode();
+                setMenuOpen(false);
+              }}
+              className="flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80 text-red-600"
+            >
+              <Trash2Icon className=" size-4 mr-2" />
+              <span className="text-sm">Delete</span>
             </button>
           </DropdownMenuContent>
         </DropdownMenu>

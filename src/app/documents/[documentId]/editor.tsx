@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import "@/components/styles/placeholder.css";
 import { Color } from "@tiptap/extension-color";
 import { useEditor, EditorContent } from "@tiptap/react";
 import Highlight from "@tiptap/extension-highlight";
@@ -16,6 +17,7 @@ import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import Link from "@tiptap/extension-link";
+import Placeholder from "@tiptap/extension-placeholder";
 import TextAlign from "@tiptap/extension-text-align";
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
@@ -92,6 +94,11 @@ export function Editor() {
       FontFamily,
       TextStyle,
       Color,
+      Placeholder.configure({
+        includeChildren: true,
+        showOnlyCurrent: false,
+        placeholder: () => "",
+      }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),

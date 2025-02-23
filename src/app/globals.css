@@ -87,6 +87,11 @@ body {
   }
 }
 .tiptap {
+  /* Focus Styles */
+  .has-focus {
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px var(--purple);
+  }
   /* .temporary-highlight {
     background-color: rgba(255, 255, 0, 0.5);
     transition: background-color 0.3s ease;

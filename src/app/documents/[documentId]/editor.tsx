@@ -17,6 +17,7 @@ import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import Link from "@tiptap/extension-link";
+import Focus from "@tiptap/extension-focus";
 import Placeholder from "@tiptap/extension-placeholder";
 import TextAlign from "@tiptap/extension-text-align";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -84,6 +85,7 @@ export function Editor() {
       FontSizeExtension,
       TaskItem.configure({ nested: true }),
       TaskList,
+      Focus,
       Table,
       TableCell,
       TableHeader,

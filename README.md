@@ -3,7 +3,9 @@
 A collaborative document editing application built with **Next.js**, **Convex**, **Tiptap**, and **Liveblocks**.
 
 ## Live Demo
-Live Demo available [Here](https://ggdocs-clone.vercel.app/).
+You can view the live demo of the website here:
+
+[Live Demo](https://ggdocs-clone.vercel.app/).
 
 ## Features
 - **Real-time collaboration**: Work together on the same document with live updates.

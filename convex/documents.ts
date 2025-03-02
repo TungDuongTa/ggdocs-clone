@@ -78,17 +78,17 @@ export const removeById = mutation({
     if (!user) {
       throw new ConvexError("Unauthorize");
     }
-    const organizationId = (user.organization_id ?? undefined) as
-      | string
-      | undefined;
+    // const organizationId = (user.organization_id ?? undefined) as
+    //   | string
+    //   | undefined;
     const document = await ctx.db.get(args.id);
     if (!document) {
       throw new ConvexError("document not found");
     }
     const isOwner = document.ownerId === user.subject;
-    const isOrganizationMember = !!(
-      document.organizationId && document.organizationId === organizationId
-    );
+    // const isOrganizationMember = !!(
+    //   document.organizationId && document.organizationId === organizationId
+    // );
     if (!isOwner) {
       throw new ConvexError("Unauthorized");
     }
@@ -124,7 +124,11 @@ export const updateById = mutation({
 export const getById = query({
   args: { id: v.id("documents") },
   handler: async (ctx, { id }) => {
-    return await ctx.db.get(id);
+    const document = await ctx.db.get(id);
+    if (!document) {
+      throw new ConvexError("Document not found");
+    }
+    return document;
   },
 });
 

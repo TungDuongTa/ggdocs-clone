@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { useState } from "react";

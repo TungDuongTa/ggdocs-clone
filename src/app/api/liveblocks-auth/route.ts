@@ -10,16 +10,16 @@ const liveblocks = new Liveblocks({
 export async function POST(req: Request) {
   const { sessionClaims } = await auth();
   if (!sessionClaims) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response("Unauthorized Session", { status: 401 });
   }
   const user = await currentUser();
   if (!user) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response("Unauthorized User", { status: 401 });
   }
   const { room } = await req.json();
   const document = await convex.query(api.documents.getById, { id: room });
   if (!document) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response("Unauthorized Document", { status: 401 });
   }
   const isOwner = document.ownerId === user.id;
   const isOrganizationMember = !!(
@@ -27,14 +27,21 @@ export async function POST(req: Request) {
   );
 
   if (!isOwner && !isOrganizationMember) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response("Unauthorized Owner or Org", { status: 401 });
   }
+  const name =
+    user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous";
 
+  const nameToNumber = name
+    .split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hue = Math.abs(nameToNumber % 360);
+  const color = `hsl(${hue},80%,60%)`;
   const session = liveblocks.prepareSession(user.id, {
     userInfo: {
-      name:
-        user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous",
+      name: name,
       avatar: user.imageUrl,
+      color: color,
     },
   });
   session.allow(room, session.FULL_ACCESS);

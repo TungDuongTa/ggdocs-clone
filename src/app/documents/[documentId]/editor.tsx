@@ -185,6 +185,7 @@ export function Editor({ initialContent }: EditorProps) {
       }),
     ],
     immediatelyRender: false,
+    autofocus: true,
     content: "<p>Highlight and blur to see temporary effects!</p>",
   });
   if (!editor) {
